@@ -1,0 +1,126 @@
+
+{% extends 'layout.html' %}
+{% block title %}Home | NEXUS HUB{% endblock %}
+
+{% block header %}
+  <h2 class="cyber-heading animate__animated animate__fadeIn">Knowledge Repository <span class="accent-text">Alpha</span></h2>
+{% endblock %}
+
+{% block content %}
+  <div class="cyber-panel mb-4">
+    <div class="cyber-panel-header">
+      <div class="cyber-icon"><i class="bi bi-grid-3x3-gap-fill"></i></div>
+      <h3>Resource Database</h3>
+      <div class="cyber-line"></div>
+    </div>
+    
+    {% if session.get('user_id') %}
+      <div class="cyber-action-bar">
+        <a href="/upload" class="btn btn-primary mb-3">
+          <i class="bi bi-upload me-2"></i> Upload New Resource
+          <span class="btn-glow"></span>
+        </a>
+      </div>
+    {% else %}
+      <div class="cyber-message">
+        <i class="bi bi-shield-lock me-2"></i>
+        <p>Access required. <a href="/login">Login</a> or <a href="/register">Register</a> to upload and vote on resources.</p>
+      </div>
+    {% endif %}
+
+  <div class="resource-grid">
+    {% for file in files %}
+      <div class="card resource-card mb-3 animate__animated animate__fadeIn" style="animation-delay: {{ loop.index0 * 0.1 }}s">
+        <div class="card-body">
+          <div class="resource-header">
+            <div class="resource-type-icon">
+              <i class="bi bi-file-earmark-text-fill"></i>
+            </div>
+            <h5 class="card-title">{{ file[1] }}</h5>
+          </div>
+          
+          <div class="resource-content">
+            <p class="card-text">{{ file[2] }}</p>
+            
+            <div class="resource-meta">
+              <div class="meta-item">
+                <i class="bi bi-book me-1"></i>
+                <span>{{ file[4] }}</span>
+              </div>
+              <div class="meta-item">
+                <i class="bi bi-calendar-event me-1"></i>
+                <span>Semester {{ file[5] }}</span>
+              </div>
+            </div>
+            
+            <div class="resource-author">
+              <i class="bi bi-person-circle me-1"></i>
+              <span>{{ file[9] }}</span>
+              <div class="vote-count">
+                <i class="bi bi-star-fill me-1"></i>
+                <span>{{ file[10] }}</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="resource-actions">
+            <a href="/download/{{ file[3] }}" class="btn btn-success btn-sm">
+              <i class="bi bi-cloud-download me-1"></i> Download
+            </a>
+            
+            {% if session.get('user_id') %}
+              <div class="vote-actions">
+                <a href="/vote/{{ file[0] }}/upvote" class="btn btn-outline-success btn-sm">
+                  <i class="bi bi-hand-thumbs-up-fill"></i>
+                </a>
+                <a href="/vote/{{ file[0] }}/downvote" class="btn btn-outline-danger btn-sm">
+                  <i class="bi bi-hand-thumbs-down-fill"></i>
+                </a>
+              </div>
+              
+              {% if session['user_id'] == file[6] %}
+                <a href="/delete/{{ file[0] }}" class="btn btn-danger btn-sm">
+                  <i class="bi bi-trash-fill me-1"></i> Delete
+                </a>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+        <div class="card-glow"></div>
+      </div>
+    {% else %}
+      <div class="empty-state">
+        <i class="bi bi-database-slash"></i>
+        <p>No resources available in the database.</p>
+      </div>
+    {% endfor %}
+   </div>
+   
+   <div class="cyber-panel mt-5">
+     <div class="cyber-panel-header">
+       <div class="cyber-icon"><i class="bi bi-info-circle-fill"></i></div>
+       <h3>System Status</h3>
+       <div class="cyber-line"></div>
+     </div>
+     <div class="cyber-stats">
+       <div class="stat-item">
+         <div class="stat-icon">
+           <i class="bi bi-hdd-network"></i>
+         </div>
+         <div class="stat-info">
+           <div class="stat-value">{{ files|length }}</div>
+           <div class="stat-label">Resources</div>
+         </div>
+       </div>
+       <div class="stat-item">
+         <div class="stat-icon">
+           <i class="bi bi-lightning-charge"></i>
+         </div>
+         <div class="stat-info">
+           <div class="stat-value">100%</div>
+           <div class="stat-label">System Operational</div>
+         </div>
+       </div>
+     </div>
+   </div>
+{% endblock %}

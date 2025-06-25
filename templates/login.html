@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block title %}Login | NEXUS HUB{% endblock %}
+
+{% block header %}
+  <h2 class="cyber-heading animate__animated animate__fadeIn">System <span class="accent-text">Access</span></h2>
+{% endblock %}
+
+{% block content %}
+  <div class="auth-container animate__animated animate__fadeIn">
+    <div class="cyber-panel auth-panel">
+      <div class="cyber-panel-header">
+        <div class="cyber-icon"><i class="bi bi-shield-lock-fill"></i></div>
+        <h3>Authentication Portal</h3>
+        <div class="cyber-line"></div>
+      </div>
+      
+      <div class="auth-form-wrapper">
+        <form method="POST" class="cyber-form">
+          <div class="form-group">
+            <div class="input-icon-wrapper">
+              <i class="bi bi-person-fill"></i>
+              <input type="text" name="username" placeholder="Username" required>
+              <div class="input-focus-bar"></div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="input-icon-wrapper">
+              <i class="bi bi-key-fill"></i>
+              <input type="password" name="password" placeholder="Password" required>
+              <div class="input-focus-bar"></div>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-block">
+            <i class="bi bi-box-arrow-in-right me-2"></i> Access System
+            <span class="btn-glow"></span>
+          </button>
+        </form>
+        
+        <div class="auth-links">
+          <p>No access credentials? <a href="/register">Register <i class="bi bi-arrow-right"></i></a></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="auth-decoration">
+      <div class="cyber-circuit"></div>
+    </div>
+  </div>
+{% endblock %}

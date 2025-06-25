@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+{% block title %}Upload | NEXUS HUB{% endblock %}
+
+{% block header %}
+  <h2 class="cyber-heading animate__animated animate__fadeIn">Resource <span class="accent-text">Upload</span></h2>
+{% endblock %}
+
+{% block content %}
+  <div class="upload-container animate__animated animate__fadeIn">
+    <div class="cyber-panel upload-panel">
+      <div class="cyber-panel-header">
+        <div class="cyber-icon"><i class="bi bi-cloud-upload-fill"></i></div>
+        <h3>Data Transfer Protocol</h3>
+        <div class="cyber-line"></div>
+      </div>
+      
+      <div class="upload-form-wrapper">
+        <form method="POST" enctype="multipart/form-data" class="cyber-form">
+          <div class="form-group">
+            <div class="input-icon-wrapper">
+              <i class="bi bi-type-h1"></i>
+              <input type="text" name="title" placeholder="Resource Title" required>
+              <div class="input-focus-bar"></div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="textarea-icon-wrapper">
+              <i class="bi bi-text-paragraph"></i>
+              <textarea name="description" placeholder="Resource Description" rows="4"></textarea>
+              <div class="input-focus-bar"></div>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <div class="input-icon-wrapper">
+                <i class="bi bi-book-fill"></i>
+                <input type="text" name="subject" placeholder="Subject" required>
+                <div class="input-focus-bar"></div>
+              </div>
+            </div>
+            
+            <div class="form-group col-md-6">
+              <div class="input-icon-wrapper">
+                <i class="bi bi-calendar-event-fill"></i>
+                <input type="text" name="semester" placeholder="Semester" required>
+                <div class="input-focus-bar"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="file-upload-wrapper">
+              <div class="file-upload-icon">
+                <i class="bi bi-file-earmark-arrow-up-fill"></i>
+              </div>
+              <div class="file-upload-text">Select File</div>
+              <input type="file" name="file" required class="file-upload-input">
+            </div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-block">
+            <i class="bi bi-upload me-2"></i> Upload Resource
+            <span class="btn-glow"></span>
+          </button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="upload-decoration">
+      <div class="cyber-grid"></div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+{% block title %}Register | NEXUS HUB{% endblock %}
+
+{% block header %}
+  <h2 class="cyber-heading animate__animated animate__fadeIn">New User <span class="accent-text">Registration</span></h2>
+{% endblock %}
+
+{% block content %}
+  <div class="auth-container animate__animated animate__fadeIn">
+    <div class="cyber-panel auth-panel">
+      <div class="cyber-panel-header">
+        <div class="cyber-icon"><i class="bi bi-person-plus-fill"></i></div>
+        <h3>Identity Creation Protocol</h3>
+        <div class="cyber-line"></div>
+      </div>
+      
+      <div class="auth-form-wrapper">
+        <form method="POST" class="cyber-form">
+          <div class="form-group">
+            <div class="input-icon-wrapper">
+              <i class="bi bi-person-badge-fill"></i>
+              <input type="text" name="username" placeholder="Username" required>
+              <div class="input-focus-bar"></div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="input-icon-wrapper">
+              <i class="bi bi-envelope-fill"></i>
+              <input type="email" name="email" placeholder="Email" required>
+              <div class="input-focus-bar"></div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="input-icon-wrapper">
+              <i class="bi bi-key-fill"></i>
+              <input type="password" name="password" placeholder="Password" required>
+              <div class="input-focus-bar"></div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="select-wrapper">
+              <i class="bi bi-person-workspace"></i>
+              <select name="role" class="cyber-select">
+                <option value="student">Student</option>
+                <option value="faculty">Faculty</option>
+              </select>
+              <div class="select-arrow"><i class="bi bi-chevron-down"></i></div>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-block">
+            <i class="bi bi-person-check-fill me-2"></i> Create Identity
+            <span class="btn-glow"></span>
+          </button>
+        </form>
+        
+        <div class="auth-links">
+          <p>Already registered? <a href="/login">Login <i class="bi bi-arrow-right"></i></a></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="auth-decoration">
+      <div class="cyber-circuit right"></div>
+    </div>
+  </div>
+{% endblock %}
